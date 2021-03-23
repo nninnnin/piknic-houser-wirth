@@ -10,15 +10,17 @@ function addEventToPlants (plantId, plantName) {
   if (!plants) return;
 
   Array.from(plants.children).forEach((plant) => {
-    plant.style.fill = 'black';
+    plant.style.fill = 'transparent';
 
     plant.addEventListener('click', (event) => {
       event.stopPropagation();
 
       console.log(`이것은...${plantName} 라는 식물입니다.`);
-      console.log(`Mouse position => X: ${event.clientX} Y: ${event.clientY}`);
+      console.log(`Mouse position => X: ${event.offsetX} Y: ${event.offsetY}`);
 
       const details = document.getElementById('details');
+      details.style.top = `${event.offsetY}px`;
+      details.style.left = `${event.offsetX}px`;
 
       details.textContent = plantName;
 
