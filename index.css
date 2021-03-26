@@ -1,28 +1,40 @@
 html,
 body {
-  width: 100vw;
-  height: 100vh;
-
   margin: 0;
   padding: 0;
+}
+
+body {
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* background layer */
 .container {
   position: relative;
   background-color: #fff;
+
+  width: 90%;
 }
 
 #landscape {
   width: 100%;
-  height: auto;
 }
 
 .controls {
-  position: absolute;
+  position: fixed;
   left: 10px;
   top: 10px;
   z-index: 9999;
+}
+
+.controls button {
+  width: 40px;
+  height: 40px;
+  font-size: 25px;
 }
 
 .controls#zoom-in {
@@ -58,8 +70,8 @@ body {
 
 /* pop-up detail box styling */
 #details {
-  width: 100px;
-  height: 100px;
+  width: 5vw;
+  height: 5vw;
   background-color: #fff;
   box-shadow: 0px 0px 4px black;
   border-radius: 10px;
