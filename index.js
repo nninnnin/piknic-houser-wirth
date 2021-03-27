@@ -1,40 +1,38 @@
 // document에 글로벌 클릭 이벤트 리스너 등록 (디테일 off)
+// TODO: 다른 식물의 디테일이 열릴때에만 디테일 off되도록 변경!
 document.addEventListener('click', (event) => {
-  console.log('클릭되었습니다!!');
-
   const details = document.getElementById('details');
 
   details.classList.remove('on');
   details.classList.add('off');
 });
 
-// document에 mousedown 이벤트리스너 등록 (드래그로 화면 이동)
-document.addEventListener('mousedown', (e) => {
-  const originalPositionX = e.offsetX;
-  const originalPositionY = e.offsetY;
+const container = document.getElementsByClassName('container')[0];
 
-  console.log('마우스 다운되었습니다!!', `다운 시 마우스 포지션 X: ${originalPositionX} Y: ${originalPositionY}`);
+document.addEventListener('mousedown', (e) => {
+  const originalMouseX = e.clientX;
+  const originalMouseY = e.clientY;
+
+  const originalTopPosition = Number(container.style.top.split('px')[0]);
+  const originalLeftPosition = Number(container.style.left.split('px')[0]);
 
   const mouseMoveEvent = _.throttle((e) => {
     e.preventDefault();
 
-    const movedX = originalPositionX - e.offsetX;
-    const movedY = originalPositionY - e.offsetY;
+    container.style.cursor = "move";
 
-    console.log('downed position...', originalPositionX, originalPositionY);
-    console.log('이동 포지션...', e.offsetX, e.offsetY);
+    const movedMouseX = originalMouseX - e.clientX;
+    let movedMouseY = originalMouseY - e.clientY;
 
-    console.log('다운된채로 이동중..', movedX, movedY);
-
-    const container = document.getElementsByClassName('container')[0];
-
-    container.style.left = `${-movedX}px`;
-    container.style.top = `${-movedY}px`;
+    container.style.top = `${-movedMouseY + originalTopPosition}px`;
+    container.style.left = `${-movedMouseX + originalLeftPosition}px`;
   }, 10);
 
   document.addEventListener('mousemove', mouseMoveEvent);
 
   document.addEventListener('mouseup', () => {
+    const container = document.getElementsByClassName('container')[0];
+    container.style.cursor = "default";
     document.removeEventListener('mousemove', mouseMoveEvent);
   });
 });
@@ -76,22 +74,34 @@ document.addEventListener('mousedown', (e) => {
 })();
 
 
-// 확대 - 축소
+// 확대 - 축소, comeback to original position
 (function () {
   let currentScale = 1;
 
   const zoomInButton = document.getElementById('zoom-in');
   const zoomOutButton = document.getElementById('zoom-out');
+  const comebackButton = document.getElementById('original-position');
 
   zoomInButton.addEventListener('click', e => {
+    e.stopPropagation();
     const container = document.getElementsByClassName('container')[0];
 
     container.style.transform = `scale(${currentScale += 0.1})`;
   });
 
   zoomOutButton.addEventListener('click', e => {
+    e.stopPropagation();
     const container = document.getElementsByClassName('container')[0];
 
     container.style.transform = `scale(${currentScale -= 0.1})`;
   });
+
+  comebackButton.addEventListener('click', e => {
+    e.stopPropagation();
+    const container = document.getElementsByClassName('container')[0];
+
+    container.style.transform = `scale(${currentScale = 1})`;
+    container.style.top = '0px';
+    container.style.left = '0px';
+  })
 })();
