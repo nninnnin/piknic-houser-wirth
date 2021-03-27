@@ -17,7 +17,8 @@ body {
   position: relative;
   background-color: #fff;
 
-  width: 90%;
+  width: 100%;
+  cursor: default;
 }
 
 #landscape {
@@ -32,8 +33,9 @@ body {
 }
 
 .controls button {
-  width: 40px;
-  height: 40px;
+  min-width: 50px;
+  min-height: 50px;
+
   font-size: 25px;
 }
 
