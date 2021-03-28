@@ -1,42 +1,3 @@
-// document에 글로벌 클릭 이벤트 리스너 등록 (디테일 off)
-// TODO: 다른 식물의 디테일이 열릴때에만 디테일 off되도록 변경!
-document.addEventListener('click', (event) => {
-  const details = document.getElementById('details');
-
-  details.classList.remove('on');
-  details.classList.add('off');
-});
-
-const container = document.getElementsByClassName('container')[0];
-
-document.addEventListener('mousedown', (e) => {
-  const originalMouseX = e.clientX;
-  const originalMouseY = e.clientY;
-
-  const originalTopPosition = Number(container.style.top.split('px')[0]);
-  const originalLeftPosition = Number(container.style.left.split('px')[0]);
-
-  const mouseMoveEvent = _.throttle((e) => {
-    e.preventDefault();
-
-    container.style.cursor = "move";
-
-    const movedMouseX = originalMouseX - e.clientX;
-    let movedMouseY = originalMouseY - e.clientY;
-
-    container.style.top = `${-movedMouseY + originalTopPosition}px`;
-    container.style.left = `${-movedMouseX + originalLeftPosition}px`;
-  }, 10);
-
-  document.addEventListener('mousemove', mouseMoveEvent);
-
-  document.addEventListener('mouseup', () => {
-    const container = document.getElementsByClassName('container')[0];
-    container.style.cursor = "default";
-    document.removeEventListener('mousemove', mouseMoveEvent);
-  });
-});
-
 // 각각의 식물에 클릭 이벤트 등록
 (function (){
   function addEventToPlants (plantId, plantName) {
@@ -73,6 +34,38 @@ document.addEventListener('mousedown', (e) => {
   });
 })();
 
+// 마우스로 전체 문서 드래그 드롭 가능
+(function () {
+  const container = document.getElementsByClassName('container')[0];
+
+  document.addEventListener('mousedown', (e) => {
+    const originalMouseX = e.clientX;
+    const originalMouseY = e.clientY;
+
+    const originalTopPosition = Number(container.style.top.split('px')[0]);
+    const originalLeftPosition = Number(container.style.left.split('px')[0]);
+
+    const mouseMoveEvent = _.throttle((e) => {
+      e.preventDefault();
+
+      container.style.cursor = "move";
+
+      const movedMouseX = originalMouseX - e.clientX;
+      let movedMouseY = originalMouseY - e.clientY;
+
+      container.style.top = `${-movedMouseY + originalTopPosition}px`;
+      container.style.left = `${-movedMouseX + originalLeftPosition}px`;
+    }, 10);
+
+    document.addEventListener('mousemove', mouseMoveEvent);
+
+    document.addEventListener('mouseup', () => {
+      const container = document.getElementsByClassName('container')[0];
+      container.style.cursor = "default";
+      document.removeEventListener('mousemove', mouseMoveEvent);
+    });
+  });
+})();
 
 // 확대 - 축소, comeback to original position
 (function () {
