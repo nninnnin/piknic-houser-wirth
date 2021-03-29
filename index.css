@@ -20,6 +20,7 @@ body {
 
   width: 100%;
   cursor: default;
+  transition: transform 0.5s;
 }
 
 #landscape {
@@ -38,13 +39,6 @@ body {
   min-height: 50px;
 
   font-size: 25px;
-}
-
-.controls#zoom-in {
-  background-color: red;
-}
-.controls#zoom-out {
-  background-color: blue;
 }
 
 /* svg layer */
