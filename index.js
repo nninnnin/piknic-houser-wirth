@@ -79,14 +79,14 @@
     e.stopPropagation();
     const container = document.getElementsByClassName('container')[0];
 
-    container.style.transform = `scale(${currentScale += 0.1})`;
+    container.style.transform = `scale(${currentScale += 0.2})`;
   });
 
   zoomOutButton.addEventListener('click', e => {
     e.stopPropagation();
     const container = document.getElementsByClassName('container')[0];
 
-    container.style.transform = `scale(${currentScale -= 0.1})`;
+    container.style.transform = `scale(${currentScale -= 0.2})`;
   });
 
   comebackButton.addEventListener('click', e => {
