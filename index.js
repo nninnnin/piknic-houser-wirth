@@ -87,7 +87,7 @@
 
     const container = document.getElementsByClassName('container')[0];
 
-    container.style.transform = `scale(${currentScale - 0.5 <= 1 ? 1 : currentScale -= 0.5})`;
+    container.style.transform = `scale(${currentScale - 0.5 <= 1 ? currentScale = 1 : currentScale -= 0.5})`;
   });
 
   comebackButton.addEventListener('click', e => {

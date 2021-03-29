@@ -34,11 +34,14 @@ body {
   z-index: 9999;
 }
 
-.controls button {
+.controls > button {
   min-width: 50px;
   min-height: 50px;
 
   font-size: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* svg layer */
