@@ -85,11 +85,9 @@
   zoomOutButton.addEventListener('click', e => {
     e.stopPropagation();
 
-    if (currentScale <= 0.4) return;
-
     const container = document.getElementsByClassName('container')[0];
 
-    container.style.transform = `scale(${currentScale -= 0.2})`;
+    container.style.transform = `scale(${currentScale - 0.5 <= 1 ? 1 : currentScale -= 0.5})`;
   });
 
   comebackButton.addEventListener('click', e => {
