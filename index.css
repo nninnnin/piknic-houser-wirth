@@ -12,6 +12,7 @@ body {
   align-items: center;
 
   background-color: #F8F9FB;
+  overflow: hidden;
 }
 
 /* background layer */
@@ -37,11 +38,14 @@ body {
 .controls > button {
   min-width: 50px;
   min-height: 50px;
+  background-color: #fff;
 
   font-size: 25px;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  margin-bottom: 1px;
 }
 
 /* svg layer */
@@ -74,23 +78,32 @@ body {
   height: 5vw;
   background-color: #fff;
   box-shadow: 0px 0px 4px black;
-  border-radius: 10px;
+  border-radius: 5px;
 
   position: absolute;
   left: 50%;
   top: 50%;
   z-index: 5000;
 
-  display: none;
+  display: flex;
+  transform: scale(0);
+  transition: transform 0.2s;
   justify-content: center;
   align-items: center;
 }
 #details.on {
-  display: flex;
+  transform: scale(1);
 }
 #details.off {
-  display: none;
+  transform: scale(0);
 }
+
+#details svg {
+  position: absolute;
+  top: 1%;
+  right: 1%;
+}
+
 .ANEMONE_x0020_X_x0020_HYBRIDA_x0020_PAMINA {
   fill: none;
   stroke: transparent;

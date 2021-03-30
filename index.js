@@ -11,17 +11,29 @@
       plant.addEventListener('click', (event) => {
         event.stopPropagation();
 
-        console.log(`이것은...${plantName} 라는 식물입니다.`);
-        console.log(`Mouse position => X: ${event.offsetX} Y: ${event.offsetY}`);
-
         const details = document.getElementById('details');
-        details.style.top = `${event.offsetY}px`;
-        details.style.left = `${event.offsetX}px`;
+        const closeButton = details.getElementsByTagName('svg')[0];
 
-        details.textContent = plantName;
+        closeButton.addEventListener('click', closeDetailPopup);
 
-        details.classList.remove('off');
-        details.classList.add('on');
+        function closeDetailPopup () {
+          details.classList.remove('on');
+          details.classList.add('off');
+        }
+
+        // 이전에 있던건 끄고..
+        closeDetailPopup();
+
+        setTimeout(function () {
+          // 위치와 컨텐츠 재 설정 한 후에..
+          details.style.top = `${event.offsetY}px`;
+          details.style.left = `${event.offsetX}px`;
+          details.children[0].textContent = plantName;
+
+          // 새롭게 보여줘야..
+          details.classList.remove('off');
+          details.classList.add('on');
+        }, 100);
       });
     });
   }
