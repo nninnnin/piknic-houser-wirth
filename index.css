@@ -74,12 +74,12 @@ body {
 
 /* pop-up detail box styling */
 #details {
-  width: 5vw;
-  height: 5vw;
+  max-width: 20vw;
   background-color: #fff;
   color: #160005;
   box-shadow: 0px 0px 4px #160005;
   border-radius: 5px;
+  padding: 3%;
 
   position: absolute;
   left: 50%;
@@ -99,234 +99,242 @@ body {
   transform: scale(0);
 }
 
+#details img {
+  width: 100%;
+  height: auto;
+}
+
 #details svg {
   position: absolute;
   top: 5%;
   right: 5%;
+
+  width: 2.5vw;
+  height: 2.5vw;
   fill: #160005;
 }
 
-.ANEMONE_x0020_X_x0020_HYBRIDA_x0020_PAMINA {
+.ANEMONE_X_HYBRIDA_PAMINA {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.ASTER_x0020_LITTLE_x0020_CARLON {
+.ASTER_LITTLE_CARLON {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.ASTER_x0020_ANELLUS_x0020_SONORA {
+.ASTER_ANELLUS_SONORA {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.CRAMBE_x0020_CORDIFOLIA {
+.CRAMBE_CORDIFOLIA {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.DORYCNIUM_x0020_HIRSUTUM {
+.DORYCNIUM_HIRSUTUM {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.ECHINACEA_x0020_PURPUREA_x0020_FA_x0020_PM {
+.ECHINACEA_PURPUREA_FA_PM {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.ECHINOPS_x0020_BANNATICUS {
+.ECHINOPS_BANNATICUS {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.ERYNGIUM_x0020_ALPINUM {
+.ERYNGIUM_ALPINUM {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.GA_x0020_TD {
+.GA_TD {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.GERANIUM_x0020_ROZANNE {
+.GERANIUM_ROZANNE {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.GILLENIA_x0020_TRIFOLIATA {
+.GILLENIA_TRIFOLIATA {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.HELENIUM_x0020_MORHEIM_x0020_BEAUTY {
+.HELENIUM_MORHEIM_BEAUTY {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.KNAUTIA_x0020_MACEDONICA_x0020_O_x0020_H {
+.KNAUTIA_MACEDONICA_O_H {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.LIATRIS_x0020_SPICATA_x0020_LIMONIUM_x0020_LATIFOLIUM {
+.LIATRIS_SPICATA_LIMONIUM_LATIFOLIUM {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.LOBELIA_x0020_YEDRARIENSIS {
+.LOBELIA_YEDRARIENSIS {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.LYNCHNIS_x0020_CHALCEDONIA {
+.LYNCHNIS_CHALCEDONIA {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.LYSIMACHIA_x0020_EPHEMERUM {
+.LYSIMACHIA_EPHEMERUM {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.MOLINIA_x0020_CAERULEA_x0020_ED {
+.MOLINIA_CAERULEA_ED {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.MONARDA_x0020_BRADBURIANA_x0020_NG {
+.MONARDA_BRADBURIANA_NG {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.PANICUM_x0020_SHENANDOAH {
+.PANICUM_SHENANDOAH {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.PAPAVER_x0020_ORIENTALE_x0020_KARINE {
+.PAPAVER_ORIENTALE_KARINE {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.PENSTEMON_x0020_DIGITALIS_x0020_KARINE {
+.PENSTEMON_DIGITALIS_KARINE {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.PHLOMIS_x0020_RUSSELIANA {
+.PHLOMIS_RUSSELIANA {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.SCUTELLARIA_x0020_INCANA {
+.SCUTELLARIA_INCANA {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.SEDUM_x0020_MATRONA {
+.SEDUM_MATRONA {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.SEUNUM_x0020_WALLICHIANUM {
+.SEUNUM_WALLICHIANUM {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.SERRATULA_x0020_SEOANEI {
+.SERRATULA_SEOANEI {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.SESLERIA_x0020_AUTUMNALIS {
+.SESLERIA_AUTUMNALIS {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.SPOROBOLUS_x0020_HETEROLEPSIS {
+.SPOROBOLUS_HETEROLEPSIS {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.STACHYS_x0020_OFFICINALIS_x0020_ROSEA {
+.STACHYS_OFFICINALIS_ROSEA {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.SUCCISA_x0020_PRATENSIS {
+.SUCCISA_PRATENSIS {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.VERONICASTRUM_x0020_VIRGINICUM_x0020_ERICA {
+.VERONICASTRUM_VIRGINICUM_ERICA {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.AC_x0020_CR {
+.AC_CR {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.AL_x0020_H {
+.AL_H {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.AM_x0020_T {
+.AM_T {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.AT_x0020_J {
+.AT_J {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.BO_x0020_CU {
+.BO_CU {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.BRM_x0020_L_x0020__x002B__x0020_MOMO {
+.BRM_L__x002B__MOMO {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.CH_x0020_HI_x0020_RO {
+.CH_HI_RO {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.EC_x0020_PA_x0020__x002B__x0020_ST_x0020_TE {
+.EC_PA__x002B__ST_TE {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.ER_x0020_AL {
+.ER_AL {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.GE_x0020_PA {
+.GE_PA {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.HE_x0020_MO {
+.HE_MO {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.LY_x0020_EP {
+.LY_EP {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.LY_x0020_SA_x0020_BL {
+.LY_SA_BL {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
@@ -336,27 +344,27 @@ body {
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.NE_x0020_SU {
+.NE_SU {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.PA_x0020_SH {
+.PA_SH {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.PA_x0020_OR {
+.PA_OR {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.PE_x0020_VI {
+.PE_VI {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.PE_x0020_HU {
+.PE_HU {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
@@ -366,67 +374,67 @@ body {
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.PY_x0020_MU {
+.PY_MU {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.SA_x0020_DE {
+.SA_DE {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.SA_x0020_RED {
+.SA_RED {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.SC_x0020_CO_x0020__x002B__x0020_LI_x0020_LA {
+.SC_CO__x002B__LI_LA {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.SC_x0020_IN {
+.SC_IN {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.SE_x0020_MA {
+.SE_MA {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.SE_x0020_AU {
+.SE_AU {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.ST_x0020_HU {
+.ST_HU {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.TH_x0020_DI_x0020__x002B__x0020_GE_x0020_AS {
+.TH_DI__x002B__GE_AS {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.SA_x0020_VE_x0020_PU {
+.SA_VE_PU {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.VE_x0020_VI_x0020_ER {
+.VE_VI_ER {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.SP_x0020_HE {
+.SP_HE {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.AC_x0020_FE {
+.AC_FE {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
@@ -436,162 +444,162 @@ body {
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.AM_x0020_CA {
+.AM_CA {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.AM_x0020_HUB {
+.AM_HUB {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.AS_x0020_IN {
+.AS_IN {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.AS_x0020_TA_x0020_JI {
+.AS_TA_JI {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.DI_x0020_CA {
+.DI_CA {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.EC_x0020_PA_x0020_HU_x0020_DA {
+.EC_PA_HU_DA {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.FE_x0020_MA {
+.FE_MA {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.IM_x0020_CY {
+.IM_CY {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.IR_x0020_CH_x0020_BL {
+.IR_CH_BL {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.LY_x0020_SA_x0020_SW {
+.LY_SA_SW {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.MO_x0020_CA_x0020_MO_x0020__x002B__x0020_LI_x0020_LA {
+.MO_CA_MO__x002B__LI_LA {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.MO_x0020_BR {
+.MO_BR {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.PE_x0020_AM_x0020_AL {
+.PE_AM_AL {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.RU_x0020_HU {
+.RU_HU {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.SC_x0020_CO {
+.SC_CO {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.SE_x0020_CO_x0020_RE {
+.SE_CO_RE {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.AN_x0020_WI {
+.AN_WI {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.AS_x0020_TA {
+.AS_TA {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.AS_x0020_MA_x0020_RO {
+.AS_MA_RO {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.BR_x0020_ME_x0020_LI {
+.BR_ME_LI {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.CA_x0020_LE {
+.CA_LE {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.CI_x0020_SI_x0020_X_x0020_JA_x0020_CO {
+.CI_SI_X_JA_CO {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.CL_x0020_HE_x0020_CH_x0020_PU {
+.CL_HE_CH_PU {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.DA_x0020_PE {
+.DA_PE {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.GE_x0020_SP {
+.GE_SP {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.IR_x0020_SI_x0020_PE_x0020_BL {
+.IR_SI_PE_BL {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.LO_x0020_TU {
+.LO_TU {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.LY_x0020_SA {
+.LY_SA {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.MY_x0020_GA {
+.MY_GA {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.PI_x0020_MA {
+.PI_MA {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.SE_x0020_SE {
+.SE_SE {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
 }
-.TR_x0020_FO {
+.TR_FO {
   fill: none;
   stroke: transparent;
   stroke-miterlimit: 10;
