@@ -11,6 +11,10 @@
       plant.addEventListener("click", (event) => {
         event.stopPropagation();
 
+        if (isDetailOpened) {
+          return;
+        }
+
         const details = document.getElementById("details");
         const closeButton = details.getElementsByTagName("svg")[0];
 
@@ -22,6 +26,7 @@
         function closeDetailPopup() {
           details.classList.remove("on");
           details.classList.add("off");
+          isDetailOpened = false;
         }
 
         closeDetailPopup();
@@ -43,6 +48,7 @@
 
           details.classList.remove("off");
           details.classList.add("on");
+          isDetailOpened = true;
         }, 100);
       });
     });
@@ -92,6 +98,8 @@
   });
 })();
 
+let isDetailOpened = false;
+
 // 마우스로 전체 문서 드래그 드롭 가능
 (function () {
   const container = document.getElementsByClassName("container")[0];
@@ -105,6 +113,10 @@
 
     const mouseMoveEvent = _.throttle((e) => {
       e.preventDefault();
+
+      if (isDetailOpened) {
+        return;
+      }
 
       container.style.cursor = "move";
 
@@ -126,6 +138,14 @@
   });
 })();
 
+function closeDetailPopup() {
+  const details = document.getElementById("details");
+
+  details.classList.remove("on");
+  details.classList.add("off");
+  isDetailOpened = false;
+}
+
 // 확대 - 축소, comeback to original position
 (function () {
   let currentScale = 1;
@@ -136,6 +156,11 @@
 
   zoomInButton.addEventListener("click", (e) => {
     e.stopPropagation();
+
+    if (isDetailOpened) {
+      closeDetailPopup();
+    }
+
     const container = document.getElementsByClassName("container")[0];
 
     const currentLeft = Number(container.style.left.split("px")[0]);
@@ -150,6 +175,10 @@
 
   zoomOutButton.addEventListener("click", (e) => {
     e.stopPropagation();
+
+    if (isDetailOpened) {
+      closeDetailPopup();
+    }
 
     const container = document.getElementsByClassName("container")[0];
 
@@ -167,6 +196,11 @@
 
   comebackButton.addEventListener("click", (e) => {
     e.stopPropagation();
+
+    if (isDetailOpened) {
+      closeDetailPopup();
+    }
+
     const container = document.getElementsByClassName("container")[0];
 
     container.style.transform = `scale(${(currentScale = 1)})`;
