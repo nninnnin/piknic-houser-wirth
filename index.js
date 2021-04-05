@@ -14,6 +14,9 @@
         const details = document.getElementById("details");
         const closeButton = details.getElementsByTagName("svg")[0];
 
+        details.addEventListener("mousedown", (e) => {
+          e.stopPropagation();
+        });
         closeButton.addEventListener("click", closeDetailPopup);
 
         function closeDetailPopup() {
@@ -24,12 +27,13 @@
         closeDetailPopup();
 
         setTimeout(function () {
-          details.style.top = `${event.offsetY}px`;
-          details.style.left = `${event.offsetX}px`;
+          details.style.top = `${event.clientY}px`;
+          details.style.left = `${event.clientX}px`;
 
           const { koreanName, scientificName, description } = plantTextData[
             plantId
           ];
+
           details.children[0].innerHTML = `
             <div>${koreanName}</div>
             <div>${scientificName}</div>
