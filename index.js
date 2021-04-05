@@ -1,3 +1,6 @@
+let isDetailOpened = false;
+let isMoved = false;
+
 // 각각의 식물에 클릭 이벤트 등록
 (async function () {
   function addEventToPlants(plantId, plantName) {
@@ -98,8 +101,6 @@
   });
 })();
 
-let isDetailOpened = false;
-
 // 마우스로 전체 문서 드래그 드롭 가능
 (function () {
   const container = document.getElementsByClassName("container")[0];
@@ -119,6 +120,7 @@ let isDetailOpened = false;
       }
 
       container.style.cursor = "move";
+      isMoved = true;
 
       const movedMouseX = originalMouseX - e.clientX;
       let movedMouseY = originalMouseY - e.clientY;
@@ -132,7 +134,20 @@ let isDetailOpened = false;
     document.addEventListener("mouseup", (e) => {
       const container = document.getElementsByClassName("container")[0];
 
-      container.style.cursor = "default";
+      if (isMoved) {
+        window.addEventListener("click", captureClick, true);
+
+        container.style.cursor = "default";
+        isMoved = false;
+
+        return;
+      }
+
+      function captureClick(e) {
+        e.stopPropagation();
+        window.removeEventListener("click", captureClick, true);
+      }
+
       document.removeEventListener("mousemove", mouseMoveEvent);
     });
   });
