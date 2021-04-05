@@ -1,61 +1,103 @@
 // 각각의 식물에 클릭 이벤트 등록
-(function (){
-  function addEventToPlants (plantId, plantName) {
+(async function () {
+  function addEventToPlants(plantId, plantName) {
     const plants = document.getElementById(plantId);
 
     if (!plants) return;
 
     Array.from(plants.children).forEach((plant) => {
-      plant.style.fill = 'transparent';
+      plant.style.fill = "transparent";
 
-      plant.addEventListener('click', (event) => {
+      plant.addEventListener("click", (event) => {
         event.stopPropagation();
 
-        const details = document.getElementById('details');
-        const closeButton = details.getElementsByTagName('svg')[0];
+        const details = document.getElementById("details");
+        const closeButton = details.getElementsByTagName("svg")[0];
 
-        closeButton.addEventListener('click', closeDetailPopup);
+        closeButton.addEventListener("click", closeDetailPopup);
 
-        function closeDetailPopup () {
-          details.classList.remove('on');
-          details.classList.add('off');
+        function closeDetailPopup() {
+          details.classList.remove("on");
+          details.classList.add("off");
         }
 
-        // 이전에 있던건 끄고..
         closeDetailPopup();
 
         setTimeout(function () {
-          // 위치와 컨텐츠 재 설정 한 후에..
           details.style.top = `${event.offsetY}px`;
           details.style.left = `${event.offsetX}px`;
-          details.children[0].textContent = plantName;
 
-          // 새롭게 보여줘야..
-          details.classList.remove('off');
-          details.classList.add('on');
+          const { koreanName, scientificName, description } = plantTextData[
+            plantId
+          ];
+          details.children[0].innerHTML = `
+            <div>${koreanName}</div>
+            <div>${scientificName}</div>
+            <img src="/public/images/flowers/${scientificName}.png"></img>
+            <div>${description}</div>
+          `;
+
+          details.classList.remove("off");
+          details.classList.add("on");
         }, 100);
       });
     });
   }
 
-  const plantBundles = Array.from(document.getElementsByTagName('g'));
+  async function getPlantTextData() {
+    const response = await fetch("/public/data/flower-info.json");
+
+    const result = await response.json();
+
+    const flowerList = {};
+
+    result.forEach((item) => {
+      let { scientificName, className, ...rest } = item;
+
+      const replaceChars = {
+        "+": "x002B",
+        " ": "_",
+      };
+
+      className = className.replace(/\+|\s/g, (m) => replaceChars[m]);
+
+      const replaceChars2 = {
+        "'": "_",
+        " ": "-",
+      };
+
+      scientificName = scientificName.replace(/'|\s/g, (m) => replaceChars2[m]);
+
+      flowerList[className] = {
+        scientificName,
+        ...rest,
+      };
+    });
+
+    return flowerList;
+  }
+
+  const plantTextData = await getPlantTextData();
+
+  console.log(plantTextData);
+
+  const plantBundles = Array.from(document.getElementsByTagName("g"));
 
   plantBundles.forEach((bundle, index) => {
-    console.log(bundle.id);
     addEventToPlants(bundle.id, index);
   });
 })();
 
 // 마우스로 전체 문서 드래그 드롭 가능
 (function () {
-  const container = document.getElementsByClassName('container')[0];
+  const container = document.getElementsByClassName("container")[0];
 
-  document.addEventListener('mousedown', (e) => {
+  document.addEventListener("mousedown", (e) => {
     const originalMouseX = e.clientX;
     const originalMouseY = e.clientY;
 
-    const originalTopPosition = Number(container.style.top.split('px')[0]);
-    const originalLeftPosition = Number(container.style.left.split('px')[0]);
+    const originalTopPosition = Number(container.style.top.split("px")[0]);
+    const originalLeftPosition = Number(container.style.left.split("px")[0]);
 
     const mouseMoveEvent = _.throttle((e) => {
       e.preventDefault();
@@ -69,12 +111,13 @@
       container.style.left = `${-movedMouseX + originalLeftPosition}px`;
     }, 10);
 
-    document.addEventListener('mousemove', mouseMoveEvent);
+    document.addEventListener("mousemove", mouseMoveEvent);
 
-    document.addEventListener('mouseup', () => {
-      const container = document.getElementsByClassName('container')[0];
+    document.addEventListener("mouseup", (e) => {
+      const container = document.getElementsByClassName("container")[0];
+
       container.style.cursor = "default";
-      document.removeEventListener('mousemove', mouseMoveEvent);
+      document.removeEventListener("mousemove", mouseMoveEvent);
     });
   });
 })();
@@ -83,52 +126,47 @@
 (function () {
   let currentScale = 1;
 
-  const zoomInButton = document.getElementById('zoom-in');
-  const zoomOutButton = document.getElementById('zoom-out');
-  const comebackButton = document.getElementById('original-position');
+  const zoomInButton = document.getElementById("zoom-in");
+  const zoomOutButton = document.getElementById("zoom-out");
+  const comebackButton = document.getElementById("original-position");
 
-  zoomInButton.addEventListener('click', e => {
+  zoomInButton.addEventListener("click", (e) => {
     e.stopPropagation();
-    const container = document.getElementsByClassName('container')[0];
+    const container = document.getElementsByClassName("container")[0];
 
-    container.style.transform = `scale(${currentScale += 0.5})`;
+    const currentLeft = Number(container.style.left.split("px")[0]);
+    const currentTop = Number(container.style.top.split("px")[0]);
+
+    currentScale += 0.5;
+
+    container.style.left = `${currentLeft}px`;
+    container.style.top = `${currentTop}px`;
+    container.style.transform = `scale(${currentScale})`;
   });
 
-  zoomOutButton.addEventListener('click', e => {
+  zoomOutButton.addEventListener("click", (e) => {
     e.stopPropagation();
 
-    const container = document.getElementsByClassName('container')[0];
+    const container = document.getElementsByClassName("container")[0];
 
-    container.style.transform = `scale(${currentScale - 0.5 <= 1 ? currentScale = 1 : currentScale -= 0.5})`;
+    const currentTop = Number(container.style.top.split("px")[0]);
+    const currentLeft = Number(container.style.left.split("px")[0]);
+
+    currentScale -= 0.5;
+
+    container.style.left = `${currentLeft}px`;
+    container.style.top = `${currentTop}px`;
+    container.style.transform = `scale(${
+      currentScale <= 1 ? (currentScale = 1) : currentScale
+    })`;
   });
 
-  comebackButton.addEventListener('click', e => {
+  comebackButton.addEventListener("click", (e) => {
     e.stopPropagation();
-    const container = document.getElementsByClassName('container')[0];
+    const container = document.getElementsByClassName("container")[0];
 
-    container.style.transform = `scale(${currentScale = 1})`;
-    container.style.top = '0px';
-    container.style.left = '0px';
-  })
-})();
-
-// 이름 데이터 가져오기..
-(async function () {
-  const result = await fetch('/public/data/flower-info.json');
-
-  const flowerList = await result.json();
-
-  flowerList.forEach(item => {
-    console.log(item);
-
-    // const keys = Object.keys(item);
-
-    // keys.forEach(key => {
-    //   if (key.includes('FIELD')) {
-    //     delete item[key];
-    //   }
-    // });
-
-    // return item;
+    container.style.transform = `scale(${(currentScale = 1)})`;
+    container.style.top = "0px";
+    container.style.left = "0px";
   });
 })();
