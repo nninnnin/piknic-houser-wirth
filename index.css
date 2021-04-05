@@ -74,7 +74,8 @@ body {
 
 /* pop-up detail box styling */
 #details {
-  max-width: 20vw;
+  width: 20vw;
+  height: auto;
   background-color: #fff;
   color: #160005;
   box-shadow: 0px 0px 4px #160005;
@@ -91,6 +92,8 @@ body {
   transition: transform 0.2s;
   justify-content: center;
   align-items: center;
+
+  user-select: none;
 }
 #details.on {
   transform: scale(1);
@@ -102,6 +105,7 @@ body {
 #details img {
   width: 100%;
   height: auto;
+  pointer-events: none;
 }
 
 #details svg {
@@ -112,6 +116,7 @@ body {
   width: 2.5vw;
   height: 2.5vw;
   fill: #160005;
+  cursor: pointer;
 }
 
 .ANEMONE_X_HYBRIDA_PAMINA {
