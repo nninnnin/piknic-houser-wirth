@@ -111,3 +111,24 @@
     container.style.left = '0px';
   })
 })();
+
+// 이름 데이터 가져오기..
+(async function () {
+  const result = await fetch('/public/data/flower-info.json');
+
+  const flowerList = await result.json();
+
+  flowerList.forEach(item => {
+    console.log(item);
+
+    // const keys = Object.keys(item);
+
+    // keys.forEach(key => {
+    //   if (key.includes('FIELD')) {
+    //     delete item[key];
+    //   }
+    // });
+
+    // return item;
+  });
+})();
