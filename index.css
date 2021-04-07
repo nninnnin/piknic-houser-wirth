@@ -31,15 +31,17 @@ body {
 
 .controls {
   position: fixed;
-  left: 10px;
-  top: 10px;
+  right: 1.5vw;
+  top: 1.5vw;
   z-index: 9999;
+
+  display: flex;
 }
 
-.controls > button {
+.controls > svg {
   min-width: 50px;
   min-height: 50px;
-  background-color: #fff;
+  background-color: transparent;
 
   font-size: 25px;
   display: flex;
@@ -47,6 +49,18 @@ body {
   justify-content: center;
 
   margin-bottom: 1px;
+  border: none;
+}
+
+.controls .button-bg {
+  fill: #ffffff;
+}
+
+.controls .button-line {
+  fill: none;
+  stroke: #000000;
+  stroke-width: 8;
+  stroke-miterlimit: 10;
 }
 
 /* svg layer */
@@ -59,46 +73,35 @@ body {
   width: 100%;
 }
 
-#MONARDA_BRADBURIANA_NG > polygon {
-  opacity: 1;
-  fill: black;
-  stroke: transparent;
-  stroke-miterlimit: 10;
-}
-
-#SUCCISA_PRATENSIS > polygon {
-  opacity: 1;
-  fill: blue;
-  stroke: transparent;
-  stroke-miterlimit: 10;
-}
-
 /* pop-up detail box styling */
 #details {
-  width: 20vw;
+  width: 14vw;
   height: auto;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.9);
   color: #160005;
-  box-shadow: 0px 0px 4px #160005;
-  border-radius: 5px;
-  padding: 3%;
+  padding: 0.9vw;
 
   position: absolute;
-  left: 50%;
-  top: 50%;
   z-index: 5000;
 
-  display: flex;
   transform: scale(0);
   transition: transform 0.2s;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
 
   user-select: none;
 }
+
+#details span {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 #details.on {
   transform: scale(1);
 }
+
 #details.off {
   transform: scale(0);
 }
@@ -106,18 +109,52 @@ body {
 #details img {
   width: 100%;
   height: auto;
+
   pointer-events: none;
 }
 
-#details svg {
-  position: absolute;
-  top: 5%;
-  right: 5%;
+#details .header {
+  font-size: 0.85vw;
+  font-weight: 900;
+  margin-top: 0.7vw;
+}
 
-  width: 2.5vw;
-  height: 2.5vw;
-  fill: #160005;
+#details hr {
+  border: 0;
+  height: 1px;
+  background-color: black;
+  margin: 0.7vw 0 0.7vw 0;
+}
+
+#details .desc {
+  font-size: 0.85vw;
+  font-weight: 600;
+}
+
+#details svg {
+  background-color: #fff;
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  width: 1.7vw;
+  height: 1.7vw;
   cursor: pointer;
+}
+
+#details .closeButton {
+  fill: none;
+  stroke: #000000;
+  stroke-width: 8;
+  stroke-miterlimit: 10;
+}
+
+svg polygon {
+  fill: transparent;
+}
+
+svg polygon:hover {
+  fill: rgba(0, 0, 0, 0.5) !important;
 }
 
 .ANEMONE_X_HYBRIDA_PAMINA {
