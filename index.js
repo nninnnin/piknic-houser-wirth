@@ -1,29 +1,32 @@
 let isDetailOpened = false;
 let isMoved = false;
 
-// 각각의 식물에 클릭 이벤트 등록
+// Popup and close details when a plant is clicked
 (async function () {
-  function addEventToPlants(plantId, plantName) {
+  function addEventToPlants(plantId) {
     const plants = document.getElementById(plantId);
 
     if (!plants) return;
 
     Array.from(plants.children).forEach((plant) => {
-      plant.style.fill = "transparent";
+      plant.style.fill = "transparent"; // CSS에서 하면 안되나?
 
-      plant.addEventListener("click", (event) => {
+      plant.addEventListener("mousedown", (event) => {
         event.stopPropagation();
-
-        if (isDetailOpened) {
-          return;
-        }
 
         const details = document.getElementById("details");
         const closeButton = details.getElementsByTagName("svg")[0];
 
+        if (isDetailOpened) {
+          closeDetailPopup();
+          return;
+        }
+
         details.addEventListener("mousedown", (e) => {
+          // 왜 있는 코드지?
           e.stopPropagation();
         });
+
         closeButton.addEventListener("click", closeDetailPopup);
 
         function closeDetailPopup() {
@@ -43,16 +46,24 @@ let isMoved = false;
           ];
 
           details.children[0].innerHTML = `
-            <div>${koreanName}</div>
-            <div>${scientificName}</div>
             <img src="/public/images/flowers/${scientificName}.png"></img>
-            <div>${description}</div>
+            <div class="header">
+              ${koreanName}
+              <br/>
+              ${scientificName}
+            </div>
+            <hr>
+            <div class="desc">
+              ${description}
+            </div>
           `;
 
           details.classList.remove("off");
           details.classList.add("on");
           isDetailOpened = true;
         }, 100);
+
+        return;
       });
     });
   }
@@ -101,23 +112,24 @@ let isMoved = false;
   });
 })();
 
-// 마우스로 전체 문서 드래그 드롭 가능
+// 드래그 - 드롭
 (function () {
   const container = document.getElementsByClassName("container")[0];
 
   document.addEventListener("mousedown", (e) => {
+    if (isDetailOpened) {
+      closeDetailPopup();
+      // return;
+    }
+
     const originalMouseX = e.clientX;
     const originalMouseY = e.clientY;
 
     const originalTopPosition = Number(container.style.top.split("px")[0]);
     const originalLeftPosition = Number(container.style.left.split("px")[0]);
 
-    const mouseMoveEvent = _.throttle((e) => {
+    const mouseMoveEvent = (e) => {
       e.preventDefault();
-
-      if (isDetailOpened) {
-        return;
-      }
 
       container.style.cursor = "move";
       isMoved = true;
@@ -127,7 +139,7 @@ let isMoved = false;
 
       container.style.top = `${-movedMouseY + originalTopPosition}px`;
       container.style.left = `${-movedMouseX + originalLeftPosition}px`;
-    }, 10);
+    };
 
     document.addEventListener("mousemove", mouseMoveEvent);
 
@@ -136,12 +148,10 @@ let isMoved = false;
 
       if (isMoved) {
         window.addEventListener("click", captureClick, true);
-
-        container.style.cursor = "default";
-        isMoved = false;
-
-        return;
       }
+
+      container.style.cursor = "default";
+      isMoved = false;
 
       function captureClick(e) {
         e.stopPropagation();
@@ -164,16 +174,29 @@ function closeDetailPopup() {
 // 확대 - 축소, comeback to original position
 (function () {
   let currentScale = 1;
+  let currentScaleOfPopup = 1;
 
   const zoomInButton = document.getElementById("zoom-in");
   const zoomOutButton = document.getElementById("zoom-out");
   const comebackButton = document.getElementById("original-position");
 
+  zoomInButton.addEventListener("mousedown", (e) => {
+    e.stopPropagation();
+  });
+
+  zoomOutButton.addEventListener("mousedown", (e) => {
+    e.stopPropagation();
+  });
+
+  comebackButton.addEventListener("mousedown", (e) => {
+    e.stopPropagation();
+  });
+
   zoomInButton.addEventListener("click", (e) => {
     e.stopPropagation();
 
-    if (isDetailOpened) {
-      closeDetailPopup();
+    if (currentScale >= 4) {
+      return;
     }
 
     const container = document.getElementsByClassName("container")[0];
@@ -181,7 +204,7 @@ function closeDetailPopup() {
     const currentLeft = Number(container.style.left.split("px")[0]);
     const currentTop = Number(container.style.top.split("px")[0]);
 
-    currentScale += 0.5;
+    currentScale += 0.75;
 
     container.style.left = `${currentLeft}px`;
     container.style.top = `${currentTop}px`;
@@ -191,16 +214,12 @@ function closeDetailPopup() {
   zoomOutButton.addEventListener("click", (e) => {
     e.stopPropagation();
 
-    if (isDetailOpened) {
-      closeDetailPopup();
-    }
-
     const container = document.getElementsByClassName("container")[0];
 
     const currentTop = Number(container.style.top.split("px")[0]);
     const currentLeft = Number(container.style.left.split("px")[0]);
 
-    currentScale -= 0.5;
+    currentScale -= 0.75;
 
     container.style.left = `${currentLeft}px`;
     container.style.top = `${currentTop}px`;
