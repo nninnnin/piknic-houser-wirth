@@ -6,7 +6,7 @@
 
 ### Features
 
-조감도를 확대 및 축소할 수 있으며, 원점으로 되돌릴 수 있습니다.
+조감도를 확대 및 축소하고 상하좌우로 이동할 수 있으며, 원점으로 되돌릴 수 있습니다.
 
 식물구역에 마우스를 대었을 시 검정 반투명의 호버 이펙트가 일어납니다.
 
@@ -17,6 +17,9 @@
 - 확대시 디테일 팝업 크기 제한 [V]
 - 무브 시 플랜트 클릭 무시 **\*** [V]
   - https://stackoverflow.com/questions/8643739/cancel-click-event-in-the-mouseup-event-handler
+- 화면 안쪽에서만 디테일 팝업이 열리도록 [V]
+  - element.offsetWidth, offsetHeight, offsetLeft, offsetTop
+  - window.innerWidth, innerHeight
 - 확대 시 현재 포커스 중심으로 확대되도록 [ ]
 - 디테일 열릴때 마우스 클릭 위치에서 애니메이션 시작되도록 [ ]
 
