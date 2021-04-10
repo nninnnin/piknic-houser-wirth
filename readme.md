@@ -1,10 +1,7 @@
 # Plants of the Oudolf Gardens
 
-<div>
-  <video controls preload width="500" height="auto">
-    <source src="public/preview.mp4" type="video/mp4">
-  </video>
-</div>
+![](/public/preview.gif)
+
 전시공간 Piknic의 의뢰로 개발되었으며, Piet Oudolf의 정원 조감도를 이용하여 식물들을 소개하는 한장의 웹 페이지 입니다.
 
 ### Features
@@ -25,4 +22,4 @@
 
 <br>
 
-\*\* 개발에 필요한 대부분의 디자인과 데이터는 Piknic에서 제공받았음을 알립니다.
+\*\* 개발에 필요한 디자인과 데이터는 Piknic에서 제공받았음을 알립니다.
