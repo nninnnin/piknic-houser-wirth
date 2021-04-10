@@ -2,7 +2,7 @@
 
 <div>
   <video controls preload width="500" height="auto">
-    <source src="public/preview.mov" type="video/mp4">
+    <source src="public/preview.mp4" type="video/mp4">
   </video>
 </div>
 전시공간 Piknic의 의뢰로 개발되었으며, Piet Oudolf의 정원 조감도를 이용하여 식물들을 소개하는 한장의 웹 페이지 입니다.
@@ -14,8 +14,6 @@
 식물구역에 마우스를 대었을 시 검정 반투명의 호버 이펙트가 일어납니다.
 
 클릭 시, 식물들의 상세 정보를 확인할 수 있습니다.
-
-<br>
 
 ### Backlogs
 
