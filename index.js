@@ -38,6 +38,8 @@ let isMoved = false;
         closeDetailPopup();
 
         setTimeout(function () {
+          details.style.visibility = "hidden";
+
           details.style.top = `${event.clientY}px`;
           details.style.left = `${event.clientX}px`;
 
@@ -58,9 +60,45 @@ let isMoved = false;
             </div>
           `;
 
+          details.style.visibility = "hidden";
           details.classList.remove("off");
           details.classList.add("on");
           isDetailOpened = true;
+
+          setTimeout(() => {
+            console.log(window.innerWidth);
+            console.log(window.innerHeight);
+
+            console.log(details.offsetLeft);
+            console.log(details.offsetTop);
+            console.log(details.offsetWidth);
+            console.log(details.offsetHeight);
+
+            // 마우스가 클릭된 곳을 기준으로 팝업의 position 설정
+            // 1) 팝업이 뷰포트를 넘어갔는지 아닌지 계산해서 알아낸다
+            const isPopupCrossedBottomEnd =
+              details.offsetTop + details.offsetHeight > window.innerHeight;
+            const isPopupCrossedRightEnd =
+              details.offsetLeft + details.offsetWidth > window.innerWidth;
+
+            console.log(isPopupCrossedBottomEnd);
+            console.log(isPopupCrossedRightEnd);
+
+            // 2) 넘어갔다면 넘어가지 않도록 position을 변경시킨다 (넘어간 선이 상하좌우 어디에 걸치는지에 따라 기준점을 기준으로 위치 변경)
+            if (isPopupCrossedBottomEnd) {
+              details.style.top = `${
+                details.offsetTop - details.offsetHeight
+              }px`;
+            }
+
+            if (isPopupCrossedRightEnd) {
+              details.style.left = `${
+                details.offsetLeft - details.offsetWidth
+              }px`;
+            }
+
+            details.style.visibility = "visible";
+          }, 10);
         }, 100);
 
         return;
