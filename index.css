@@ -14,6 +14,7 @@ body {
   background-color: #f8f9fb;
   overflow: hidden;
   user-select: none;
+  cursor: move;
 }
 
 /* background layer */
@@ -21,8 +22,8 @@ body {
   position: relative;
 
   width: 100%;
-  cursor: default;
   transition: transform 0.5s;
+  cursor: move;
 }
 
 #landscape {
@@ -50,6 +51,7 @@ body {
 
   margin-bottom: 1px;
   border: none;
+  cursor: pointer;
 }
 
 .controls .button-bg {
@@ -89,6 +91,7 @@ body {
   text-align: center;
 
   user-select: none;
+  cursor: default;
 }
 
 #details span {
@@ -149,12 +152,19 @@ body {
   stroke-miterlimit: 10;
 }
 
-svg polygon {
+.container svg polygon,
+path {
   fill: transparent;
+  transition: 0.2s;
 }
 
-svg polygon:hover {
+.container svg polygon:hover {
   fill: rgba(0, 0, 0, 0.5) !important;
+  cursor: default;
+}
+.container svg path:hover {
+  fill: rgba(0, 0, 0, 0.5) !important;
+  cursor: default;
 }
 
 .ANEMONE_X_HYBRIDA_PAMINA {

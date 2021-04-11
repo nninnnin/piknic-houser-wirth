@@ -1,5 +1,8 @@
 let isDetailOpened = false;
 let isMoved = false;
+let currentScale = 1;
+let currentScaleOfPopup = 1;
+let zoomCounter = 0;
 
 // Popup and close details when a plant is clicked
 (async function () {
@@ -29,8 +32,7 @@ let isMoved = false;
         closeButton.addEventListener("click", closeDetailPopup);
 
         function closeDetailPopup() {
-          details.classList.remove("on");
-          details.classList.add("off");
+          details.style.transform = "scale(0)";
           isDetailOpened = false;
         }
 
@@ -53,8 +55,7 @@ let isMoved = false;
           `;
 
           details.style.visibility = "hidden";
-          details.classList.remove("off");
-          details.classList.add("on");
+          details.style.transform = `scale(${currentScaleOfPopup})`;
           isDetailOpened = true;
 
           setTimeout(() => {
@@ -153,7 +154,7 @@ let isMoved = false;
     const mouseMoveEvent = (e) => {
       e.preventDefault();
 
-      container.style.cursor = "move";
+      // container.style.cursor = "move";
       isMoved = true;
 
       const movedMouseX = originalMouseX - e.clientX;
@@ -172,7 +173,7 @@ let isMoved = false;
         window.addEventListener("click", captureClick, true);
       }
 
-      container.style.cursor = "default";
+      // container.style.cursor = "default";
       isMoved = false;
 
       function captureClick(e) {
@@ -186,19 +187,8 @@ let isMoved = false;
   });
 })();
 
-function closeDetailPopup() {
-  const details = document.getElementById("details");
-
-  details.classList.remove("on");
-  details.classList.add("off");
-  isDetailOpened = false;
-}
-
 // 확대 - 축소, comeback to original position
 (function () {
-  let currentScale = 1;
-  let currentScaleOfPopup = 1;
-
   const zoomInButton = document.getElementById("zoom-in");
   const zoomOutButton = document.getElementById("zoom-out");
   const comebackButton = document.getElementById("original-position");
@@ -217,51 +207,84 @@ function closeDetailPopup() {
 
   zoomInButton.addEventListener("click", (e) => {
     e.stopPropagation();
+    if (zoomCounter >= 4) return;
 
-    if (currentScale >= 4) {
-      return;
-    }
+    zoomCounter += 1;
+    console.log(zoomCounter);
 
     const container = document.getElementsByClassName("container")[0];
+    const details = document.getElementById("details");
 
     const currentLeft = Number(container.style.left.split("px")[0]);
     const currentTop = Number(container.style.top.split("px")[0]);
 
     currentScale += 0.75;
-
     container.style.left = `${currentLeft}px`;
     container.style.top = `${currentTop}px`;
     container.style.transform = `scale(${currentScale})`;
+
+    if (zoomCounter % 2 === 0) currentScaleOfPopup += 0.75;
+    if (isDetailOpened) {
+      details.style.transform = `scale(${currentScaleOfPopup})`;
+    }
   });
 
   zoomOutButton.addEventListener("click", (e) => {
     e.stopPropagation();
+    if (zoomCounter === 0) return;
+
+    zoomCounter -= 1;
+    console.log(zoomCounter);
 
     const container = document.getElementsByClassName("container")[0];
+    const details = document.getElementById("details");
 
     const currentTop = Number(container.style.top.split("px")[0]);
     const currentLeft = Number(container.style.left.split("px")[0]);
 
     currentScale -= 0.75;
-
     container.style.left = `${currentLeft}px`;
     container.style.top = `${currentTop}px`;
     container.style.transform = `scale(${
       currentScale <= 1 ? (currentScale = 1) : currentScale
     })`;
+
+    if (zoomCounter % 2 === 0) currentScaleOfPopup -= 0.75;
+    if (isDetailOpened) {
+      details.style.transform = `scale(${
+        currentScaleOfPopup <= 1
+          ? (currentScaleOfPopup = 1)
+          : currentScaleOfPopup
+      })`;
+    }
   });
 
   comebackButton.addEventListener("click", (e) => {
     e.stopPropagation();
+
+    zoomCounter = 0;
+    console.log(zoomCounter);
 
     if (isDetailOpened) {
       closeDetailPopup();
     }
 
     const container = document.getElementsByClassName("container")[0];
+    const details = document.getElementById("details");
 
     container.style.transform = `scale(${(currentScale = 1)})`;
+    // 무조건 디테일이 꺼져있는 경우잖아?
+    // details.style.transform = `scale(${(currentScaleOfPopup = 1)})`;
     container.style.top = "0px";
     container.style.left = "0px";
   });
 })();
+
+function closeDetailPopup() {
+  const details = document.getElementById("details");
+
+  currentScaleOfPopup = 1;
+
+  details.style.transform = `scale(${0})`;
+  isDetailOpened = false;
+}

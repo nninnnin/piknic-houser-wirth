@@ -20,8 +20,9 @@
 - 화면 안쪽에서만 디테일 팝업이 열리도록 [V]
   - element.offsetWidth, offsetHeight, offsetLeft, offsetTop
   - window.innerWidth, innerHeight
+- 2,4번째 줌 인/아웃에서는 디테일 팝업도 함께 줌 인/아웃되도록 [V]
+- 플랜트 클릭 시 동일한 플랜트 모두 Active 상태로 표시 [ ]
 - 디테일 열릴때 마우스 클릭 위치에서 애니메이션 시작되도록 [ ]
-- 2,4번째 줌 인/아웃에서는 디테일 팝업도 함께 줌 인/아웃되도록 [ ]
 - 확대 시 현재 포커스 중심으로 확대되도록 [ ]
 
 <br>
