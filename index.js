@@ -31,26 +31,17 @@ let zoomCounter = 0;
 
         closeButton.addEventListener("click", closeDetailPopup);
 
-        function closeDetailPopup() {
-          details.style.transform = "scale(0)";
-          isDetailOpened = false;
-        }
-
         setTimeout(() => {
           let { koreanName, scientificName, description } = plantTextData[
             plantId
           ];
-
-          scientificName = scientificName
-            .replaceAll("-", " ")
-            .replaceAll("_", "'");
 
           details.children[0].innerHTML = `
             <img src="/public/images/flowers/${scientificName}.png"></img>
             <div class="header">
               ${koreanName}
               <br/>
-              ${scientificName}
+              ${scientificName.replaceAll("-", " ").replaceAll("_", "'")}
             </div>
             <hr>
             <div class="desc">
@@ -214,7 +205,6 @@ let zoomCounter = 0;
     if (zoomCounter >= 4) return;
 
     zoomCounter += 1;
-    console.log(zoomCounter);
 
     const container = document.getElementsByClassName("container")[0];
     const details = document.getElementById("details");
@@ -238,7 +228,6 @@ let zoomCounter = 0;
     if (zoomCounter === 0) return;
 
     zoomCounter -= 1;
-    console.log(zoomCounter);
 
     const container = document.getElementsByClassName("container")[0];
     const details = document.getElementById("details");
@@ -267,14 +256,12 @@ let zoomCounter = 0;
     e.stopPropagation();
 
     zoomCounter = 0;
-    console.log(zoomCounter);
+    currentScaleOfPopup = 1;
 
-    if (isDetailOpened) {
-      closeDetailPopup();
-    }
+    closeDetailPopup();
 
     const container = document.getElementsByClassName("container")[0];
-    const details = document.getElementById("details");
+    // const details = document.getElementById("details");
 
     container.style.transform = `scale(${(currentScale = 1)})`;
     // 무조건 디테일이 꺼져있는 경우잖아?
@@ -286,8 +273,6 @@ let zoomCounter = 0;
 
 function closeDetailPopup() {
   const details = document.getElementById("details");
-
-  currentScaleOfPopup = 1;
 
   details.style.transform = `scale(${0})`;
   isDetailOpened = false;
