@@ -37,9 +37,13 @@ let zoomCounter = 0;
         }
 
         setTimeout(() => {
-          const { koreanName, scientificName, description } = plantTextData[
+          let { koreanName, scientificName, description } = plantTextData[
             plantId
           ];
+
+          scientificName = scientificName
+            .replaceAll("-", " ")
+            .replaceAll("_", "'");
 
           details.children[0].innerHTML = `
             <img src="/public/images/flowers/${scientificName}.png"></img>
