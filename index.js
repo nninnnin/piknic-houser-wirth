@@ -60,22 +60,38 @@ let zoomCounter = 0;
             // 마우스가 클릭된 곳을 기준으로 팝업의 position 설정
             // 1) 팝업이 뷰포트를 넘어갔는지 아닌지 계산해서 알아낸다
             const isPopupCrossedBottomEnd =
-              details.offsetTop + details.offsetHeight > window.innerHeight;
+              details.offsetTop + details.offsetHeight * currentScaleOfPopup >
+              window.innerHeight;
             const isPopupCrossedRightEnd =
-              details.offsetLeft + details.offsetWidth > window.innerWidth;
+              details.offsetLeft + details.offsetWidth * currentScaleOfPopup >
+              window.innerWidth;
+
+            console.log(isPopupCrossedBottomEnd);
+            console.log(isPopupCrossedRightEnd);
+
+            // 세가지가 있다
+            // 오른쪽만 넘은 경우
+            // 아랫쪽만 넘은 경우
+            // 둘다 넘은 경우
+
+            // 이 세가지 경우에 따라 창 띄우는(transform-origin) 기준점을 다 바꿔버리기
 
             // 2) 넘어갔다면 넘어가지 않도록 position을 변경시킨다 (넘어간 선이 상하좌우 어디에 걸치는지에 따라 기준점을 기준으로 위치 변경)
             if (isPopupCrossedBottomEnd) {
               details.style.top = `${
                 details.offsetTop -
-                (details.offsetTop + details.offsetHeight - window.innerHeight)
+                (details.offsetTop +
+                  details.offsetHeight * currentScaleOfPopup -
+                  window.innerHeight)
               }px`;
             }
 
             if (isPopupCrossedRightEnd) {
               details.style.left = `${
                 details.offsetLeft -
-                (details.offsetLeft + details.offsetWidth - window.innerWidth)
+                (details.offsetLeft +
+                  details.offsetWidth * currentScaleOfPopup -
+                  window.innerWidth)
               }px`;
             }
 
