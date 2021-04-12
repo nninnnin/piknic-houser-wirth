@@ -233,7 +233,7 @@ let zoomCounter = 0;
     container.style.top = `${currentTop}px`;
     container.style.transform = `scale(${currentScale})`;
 
-    if (zoomCounter % 2 === 0) currentScaleOfPopup += 0.75;
+    if (zoomCounter % 2 === 0) currentScaleOfPopup += 0.5;
     if (isDetailOpened) {
       details.style.transform = `scale(${currentScaleOfPopup})`;
     }
@@ -258,7 +258,7 @@ let zoomCounter = 0;
       currentScale <= 1 ? (currentScale = 1) : currentScale
     })`;
 
-    if (zoomCounter % 2 === 0) currentScaleOfPopup -= 0.75;
+    if (zoomCounter % 2 === 0) currentScaleOfPopup -= 0.5;
     if (isDetailOpened) {
       details.style.transform = `scale(${
         currentScaleOfPopup <= 1
