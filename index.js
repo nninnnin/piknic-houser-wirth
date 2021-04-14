@@ -4,6 +4,99 @@ let currentScale = 1;
 let currentScaleOfPopup = 1;
 let zoomCounter = 0;
 
+// Preload all the plant detail images
+(function () {
+  const flowers = [
+    'Achillea _Feuerland_.png',
+    'Achillea-_Hella-Glashoff_.png',
+    'Agastache-foeniculum.png',
+    'Allium-_Summer-Beauty_.png',
+    'Amorpha-canescens.png',
+    'Amsonia-hubrichtii.png',
+    'Anemone-_Wild-Swan_.png',
+    'Anemone-×-hybrida-_Honorine-Jobert_.png',
+    'Anemone-×-hybrida-_Pamina_.png',
+    'Asclepias-incarnata.png',
+    'Aster-_Little-Carlow_.png',
+    'Aster-amellus-_Sonora_.png',
+    'Aster-lateriflorus-_Horizontalis_.png',
+    'Aster-macrophyllus-_Twilight_.png',
+    'Aster-tataricus-_Jindai_.png',
+    'Astilboides-tabularis.png',
+    'Astrantia-major-_Roma_.png',
+    'Bouteloua-curtipendula.png',
+    'Briza-media-_Limouzi_.png',
+    'Calamintha-nepeta-ssp.-nepeta.png',
+    'Camassia-leichtlinii.png',
+    'Chaerophyllum-hirsutum-_Roseum_.png',
+    'Cimicifuga-simplex-_James-Compton_.png',
+    'Clematis-heracleifolia-_China-Purple_.png',
+    'Crambe-cordifolia.png',
+    'Darmera-peltata.png',
+    'Dianthus-carthusianorum.png',
+    'Dorycnium-hirsutum.png',
+    'Echinacea-pallida-_Hula-Dancer_.png',
+    'Echinacea-pallida.png',
+    'Echinacea-purpurea-_Fatal-Attraction_.png',
+    'Echinops-bannaticus.png',
+    'Eryngium-alpinum.png',
+    'Eryngium-yuccifolium.png',
+    'Festuca-mairei.png',
+    'Gentiana-asclepiadea.png',
+    'Geranium-_Patricia_.png',
+    'Geranium-_Rozanne_.png',
+    'Gillenia-trifoliata.png',
+    'Helenium-_Moerheim-Beauty_.png',
+    'IMperata-cylindrica.png',
+    'Imperata-cylindrica-_Red-Baron_.png',
+    'Iris-chrysographes-_Black-Form_.png',
+    'Knautia-macedonica.png',
+    'Liatris-spicata.png',
+    'Limonium-latifolium.png',
+    'Lobelia-tupa.png',
+    'Lobelia-vedrariensis.png',
+    'Lychnis-chalcedonica.png',
+    'Lysimachia-ephemerum.png',
+    'Molinia-caerulea-_Moorhexe_.png',
+    'Monarda-bradburiana.png',
+    'Myrica-gale.png',
+    'Nepeta-govaniana.png',
+    'Nepeta-subsessilis.png',
+    'Panicum-_Shenandoah_.png',
+    'Papaver-orientale-_Karine_.png',
+    'Pennisetum-viridescens.png',
+    'Penstemon-_Husker-Red_.png',
+    'Perovskia.png',
+    'Persicaria-amplexicaulis-_Alba_.png',
+    'Phlomis-russeliana.png',
+    'Pimpinella-major-_Rosea_.png',
+    'Pycnanthemum-muticum.png',
+    'Ruellia-humilis.png',
+    'Salvia-_Dear-Anja_.png',
+    'Salvia-verticillata-_Purple-Rain_.png',
+    'Scabiosa-columbaria.png',
+    'Scutellaria-incana.png',
+    'Sedum-_Matrona_.png',
+    'Selinum-wallichianum.png',
+    'Serratula-seoanei.png',
+    'Sesleria-autumnalis.png',
+    'Sporobolus-heterolepsis.png',
+    'Stachys-off. _Hummelo_.png',
+    'Stachys-officinalis-_Rosea_.png',
+    'Stipa-tenuissima.png',
+    'Succisa-pratensis.png',
+    'Thalictrum-delavayi.png',
+    'Tricyrtis-formosana.png'
+  ];
+
+  flowers.forEach(flower => preloadImages(`/public/images/flowers/${flower}`));
+
+  function preloadImages (url) {
+    const img = new Image();
+    img.src = url;
+  }
+})();
+
 // Popup and close details when a plant is clicked
 (async function () {
   function addEventToPlants(plantId) {
@@ -65,9 +158,6 @@ let zoomCounter = 0;
             const isPopupCrossedRightEnd =
               details.offsetLeft + details.offsetWidth * currentScaleOfPopup >
               window.innerWidth;
-
-            console.log(isPopupCrossedBottomEnd);
-            console.log(isPopupCrossedRightEnd);
 
             // 세가지가 있다
             // 오른쪽만 넘은 경우
@@ -136,8 +226,6 @@ let zoomCounter = 0;
   }
 
   const plantTextData = await getPlantTextData();
-
-  console.log(plantTextData);
 
   const plantBundles = Array.from(document.getElementsByTagName("g"));
 
