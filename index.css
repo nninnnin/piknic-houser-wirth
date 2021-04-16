@@ -88,7 +88,7 @@ body {
 
   transform-origin: top left;
   transform: scale(0);
-  transition: transform 0.2s;
+  transition: transform 0.3s;
   text-align: center;
 
   user-select: none;

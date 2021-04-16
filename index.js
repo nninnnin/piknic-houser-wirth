@@ -143,13 +143,12 @@ let zoomCounter = 0;
           `;
 
           details.style.visibility = "hidden";
+          details.style.top = `${event.clientY}px`;
+          details.style.left = `${event.clientX}px`;
           details.style.transform = `scale(${currentScaleOfPopup})`;
           isDetailOpened = true;
 
-          setTimeout(() => {
-            details.style.top = `${event.clientY}px`;
-            details.style.left = `${event.clientX}px`;
-
+          const imageOnload = () => {
             // 마우스가 클릭된 곳을 기준으로 팝업의 position 설정
             // 1) 팝업이 뷰포트를 넘어갔는지 아닌지 계산해서 알아낸다
             const isPopupCrossedBottomEnd =
@@ -158,6 +157,9 @@ let zoomCounter = 0;
             const isPopupCrossedRightEnd =
               details.offsetLeft + details.offsetWidth * currentScaleOfPopup >
               window.innerWidth;
+
+            // console.log('아래 넘었니', isPopupCrossedBottomEnd)
+            // console.log('오른쪽 넘었니', isPopupCrossedRightEnd)
 
             // 세가지가 있다
             // 오른쪽만 넘은 경우
@@ -186,7 +188,9 @@ let zoomCounter = 0;
             }
 
             details.style.visibility = "visible";
-          }, 10);
+          };
+
+          details.getElementsByTagName('img')[0].onload = imageOnload;
         }, 100);
       });
     });
@@ -203,7 +207,7 @@ let zoomCounter = 0;
       let { scientificName, className, ...rest } = item;
 
       const replaceChars = {
-        "+": "x002B",
+        "+": "_x2B_",
         " ": "_",
       };
 
