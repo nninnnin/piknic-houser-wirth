@@ -4,6 +4,36 @@ let currentScale = 1;
 let currentScaleOfPopup = 1;
 let zoomCounter = 0;
 
+document.onreadystatechange = function (e) {
+  console.log(e);
+  console.log(document.readyState);
+
+  let text = '문서를 로드 중입니다..';
+
+  switch (document.readyState) {
+    case 'interactive':
+      text = '이미지를 로드 중입니다..';
+      break;
+    case 'complete':
+      text = '로딩 완료';
+      break;
+    default:
+      break;
+  }
+
+  console.log(text);
+};
+
+window.onload = () => {
+  const loadingLayer = document.getElementById('loading');
+
+  loadingLayer.style.opacity = '0';
+
+  loadingLayer.addEventListener('webkitTransitionEnd', function () {
+    loadingLayer.style.display = 'none';
+  });
+};
+
 // Preload all the plant detail images
 (function () {
   const flowers = [
@@ -125,9 +155,40 @@ let zoomCounter = 0;
         closeButton.addEventListener("click", closeDetailPopup);
 
         setTimeout(() => {
-          let { koreanName, scientificName, description } = plantTextData[
-            plantId
-          ];
+          let { koreanName, scientificName, description, mixed  } = plantTextData[plantId];
+
+          const triviaCount = mixed ? 2 : 1;
+          let trivia = '';
+
+          for (let i = 1; i <= triviaCount; i++) {
+            if (i === 1) {
+              var { icon1: icon, height1: height, flowering1: flowering } = plantTextData[plantId];
+            } else {
+              var { icon2: icon, height2: height, flowering2: flowering } = plantTextData[plantId];
+            }
+
+            const ellipses = {
+              ellipse1: `<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="25" cy="25" r="25" fill="black"/>
+              </svg>`,
+              ellipse2: `<svg width="25" height="50" viewBox="0 0 25 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M25.0002 25C25.0002 38.8071 13.8073 50 0.000169687 50C0 25 0.000140243 38.8071 0.000140243 25C0.000140243 11.1929 0.000140123 11.5 0.000169687 0C13.8073 0 25.0002 11.1929 25.0002 25Z" fill="black"/>
+              </svg>
+              `,
+            };
+
+            const icons = icon.split(",").reduce((acc, iconKey) => {
+              return acc += ellipses[`ellipse${iconKey.trim()}`];
+            }, "");
+
+            trivia += `
+              <div class="trivia">
+                <div class="icon icon${i}">${icons}</div>
+                <div class="height${i}">${height}cm</div>
+                <div class="flowering${i}">${flowering}월</div>
+              </div>
+            `;
+          }
 
           details.children[0].innerHTML = `
             <img src="/public/images/flowers/${scientificName}.png"></img>
@@ -136,6 +197,7 @@ let zoomCounter = 0;
               <br/>
               ${scientificName.replaceAll("-", " ").replaceAll("_", "'")}
             </div>
+            ${trivia}
             <hr>
             <div class="desc">
               ${description}
@@ -197,7 +259,7 @@ let zoomCounter = 0;
   }
 
   async function getPlantTextData() {
-    const response = await fetch("/public/data/flower-info.json");
+    const response = await fetch("/public/data/flower-info-0418.json");
 
     const result = await response.json();
 
@@ -385,3 +447,14 @@ function closeDetailPopup() {
   details.style.transform = `scale(${0})`;
   isDetailOpened = false;
 }
+
+// info button
+const infoButton = document.getElementById('info');
+
+infoButton.addEventListener('mousedown', (e) => {
+  e.stopPropagation();
+})
+
+infoButton.addEventListener('click', (e) => {
+  alert('get your credit sir')
+})
