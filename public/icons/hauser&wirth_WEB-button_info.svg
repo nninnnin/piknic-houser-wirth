@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 24.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="레이어_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
 	 y="0px" viewBox="0 0 240 240" style="enable-background:new 0 0 240 240;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:#FFFFFF;}
-	.st1{fill:none;stroke:#000000;stroke-width:8;stroke-miterlimit:10;}
-</style>
 <g>
-	<circle class="st0" cx="120" cy="120" r="119"/>
+	<circle class="button-bg" cx="120" cy="120" r="119"/>
 	<path d="M120,2c31.52,0,61.15,12.27,83.44,34.56C225.73,58.85,238,88.48,238,120s-12.27,61.15-34.56,83.44
 		C181.15,225.73,151.52,238,120,238s-61.15-12.27-83.44-34.56C14.27,181.15,2,151.52,2,120s12.27-61.15,34.56-83.44
 		C58.85,14.27,88.48,2,120,2 M120,0C53.73,0,0,53.73,0,120s53.73,120,120,120s120-53.73,120-120S186.27,0,120,0L120,0z"/>
 </g>
 <g>
-	<path class="st1" d="M79.1,88.9C79.1,66.31,97.41,48,120,48s40.9,18.31,40.9,40.9s-18.31,40.9-40.9,40.9v23.82"/>
-	<line class="st1" x1="120" y1="171.83" x2="120" y2="192"/>
+	<path class="button-line" d="M79.1,88.9C79.1,66.31,97.41,48,120,48s40.9,18.31,40.9,40.9s-18.31,40.9-40.9,40.9v23.82"/>
+	<line class="button-line" x1="120" y1="171.83" x2="120" y2="192"/>
 </g>
 </svg>

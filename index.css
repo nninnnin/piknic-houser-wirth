@@ -17,6 +17,34 @@ body {
   cursor: move;
 }
 
+#loading {
+  width: 100vw;
+  height: 100vh;
+
+  position: absolute;
+  z-index: 9999;
+  background-color: black;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 1;
+  transition: 3s;
+}
+
+#loading-status {
+  margin-top: 1em;
+  color: white;
+  font-size: 4em;
+}
+
+#logo-piknic {
+  stroke: white;
+  width: 30%;
+}
+
 /* background layer */
 .container {
   position: relative;
@@ -32,11 +60,23 @@ body {
 
 .controls {
   position: fixed;
-  right: 1.5vw;
-  top: 1.5vw;
   z-index: 9999;
 
   display: flex;
+}
+
+.controls.left {
+  left: 1.5vw;
+  top: 1.5vw;
+}
+
+.controls.left > svg {
+  border-radius: 100%;
+}
+
+.controls.right {
+  right: 1.5vw;
+  top: 1.5vw;
 }
 
 .controls > svg {
@@ -93,6 +133,8 @@ body {
 
   user-select: none;
   cursor: default;
+
+  font-size: 0.85vw;
 }
 
 #details span {
@@ -118,7 +160,6 @@ body {
 }
 
 #details .header {
-  font-size: 0.85vw;
   font-weight: 900;
   margin-top: 0.7vw;
 }
@@ -130,20 +171,28 @@ body {
   margin: 0.7vw 0 0.7vw 0;
 }
 
-#details .desc {
-  font-size: 0.85vw;
-  font-weight: 600;
+#details .trivia {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.7vw;
+  font-size: 0.75vw;
 }
 
-#details svg {
-  background-color: #fff;
-  position: absolute;
-  top: 0;
-  right: 0;
+#details .trivia div {
+  margin: 0 2%;
+}
 
-  width: 1.7vw;
-  height: 1.7vw;
-  cursor: pointer;
+#details .trivia svg {
+  width: auto;
+  height: 10px;
+}
+
+#details .icon path {
+  fill: black;
+}
+
+#details .desc {
+  font-weight: 600;
 }
 
 #details .closeButton {
@@ -151,6 +200,18 @@ body {
   stroke: #000000;
   stroke-width: 8;
   stroke-miterlimit: 10;
+}
+
+#details #closeButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  background-color: #fff;
+
+  width: 1.7vw;
+  height: 1.7vw;
+  cursor: pointer;
 }
 
 .container svg polygon,
