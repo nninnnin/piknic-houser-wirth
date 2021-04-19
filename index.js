@@ -37,7 +37,7 @@ window.onload = () => {
 // Preload all the plant detail images
 (function () {
   const flowers = [
-    'Achillea _Feuerland_.png',
+    'Achillea-_Feuerland_.png',
     'Achillea-_Hella-Glashoff_.png',
     'Agastache-foeniculum.png',
     'Allium-_Summer-Beauty_.png',
@@ -111,7 +111,7 @@ window.onload = () => {
     'Serratula-seoanei.png',
     'Sesleria-autumnalis.png',
     'Sporobolus-heterolepsis.png',
-    'Stachys-off. _Hummelo_.png',
+    'Stachys-_Hummelo_.png',
     'Stachys-officinalis-_Rosea_.png',
     'Stipa-tenuissima.png',
     'Succisa-pratensis.png',
@@ -155,6 +155,7 @@ window.onload = () => {
         closeButton.addEventListener("click", closeDetailPopup);
 
         setTimeout(() => {
+          console.log(plantTextData, plantId)
           let { koreanName, scientificName, description, mixed  } = plantTextData[plantId];
 
           const triviaCount = mixed ? 2 : 1;
@@ -169,39 +170,85 @@ window.onload = () => {
 
             const ellipses = {
               ellipse1: `<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="25" cy="25" r="25" fill="black"/>
-              </svg>`,
+              <circle cx="25" cy="25" r="24.5" fill="white" stroke="black"/>
+              </svg>
+              `,
               ellipse2: `<svg width="25" height="50" viewBox="0 0 25 50" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M25.0002 25C25.0002 38.8071 13.8073 50 0.000169687 50C0 25 0.000140243 38.8071 0.000140243 25C0.000140243 11.1929 0.000140123 11.5 0.000169687 0C13.8073 0 25.0002 11.1929 25.0002 25Z" fill="black"/>
               </svg>
               `,
+              ellipse3: `<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="25" cy="25" r="25" fill="black"/>
+              </svg>`,
             };
 
             const icons = icon.split(",").reduce((acc, iconKey) => {
-              return acc += ellipses[`ellipse${iconKey.trim()}`];
+              const ellipse = ellipses[`ellipse${iconKey.trim()}`];
+              return acc += ellipse ? ellipse : "-";
             }, "");
 
             trivia += `
+              ${
+                mixed ? (
+                `
+                <div class="header" ${i >= triviaCount ? `style="margin-top:0;"` : ""}>
+                  ${koreanName.split("+")[i - 1]}
+                  <br />
+                  <span class="italic">
+                  ${
+                    scientificName
+                      .split("+")[i - 1]
+                      .replaceAll("-", " ")
+                      .replaceAll("_", "'")
+                      .replace(
+                        /'(.*?[^\\])'/,
+                        `
+                        <span class="normal">$&</span>
+                        `
+                      )
+                  }
+                  </span>
+                </div>
+                `
+                ) : ""
+              }
               <div class="trivia">
                 <div class="icon icon${i}">${icons}</div>
                 <div class="height${i}">${height}cm</div>
                 <div class="flowering${i}">${flowering}월</div>
               </div>
+              ${!mixed || i < triviaCount ? "<hr />" : ""}
             `;
           }
 
           details.children[0].innerHTML = `
-            <img src="/public/images/flowers/${scientificName}.png"></img>
-            <div class="header">
-              ${koreanName}
-              <br/>
-              ${scientificName.replaceAll("-", " ").replaceAll("_", "'")}
-            </div>
+            <img src="/public/images/flowers/${scientificName.replaceAll(' ', '-').replaceAll("'", "_").replaceAll("%", "")}.png"></img>
+            ${
+              mixed ? "" :
+              `
+              <div class="header">
+                ${koreanName}
+                <br/>
+                <span class="italic">
+                ${scientificName.replaceAll("-", " ").replaceAll("_", "'").replace(
+                  /'(.*?[^\\])'/,
+                  `
+                  <span class="normal">$&</span>
+                  `
+                )}
+                </span>
+              </div>
+              `
+            }
             ${trivia}
-            <hr>
-            <div class="desc">
-              ${description}
-            </div>
+            ${
+              mixed ? "" :
+              (
+                `<div class="desc">
+                  ${description}
+                </div>`
+              )
+            }
           `;
 
           details.style.visibility = "hidden";
@@ -387,7 +434,7 @@ window.onload = () => {
     container.style.top = `${currentTop}px`;
     container.style.transform = `scale(${currentScale})`;
 
-    if (zoomCounter % 2 === 0) currentScaleOfPopup += 0.5;
+    if (zoomCounter === 2) currentScaleOfPopup += 0.5;
     if (isDetailOpened) {
       details.style.transform = `scale(${currentScaleOfPopup})`;
     }
@@ -412,7 +459,7 @@ window.onload = () => {
       currentScale <= 1 ? (currentScale = 1) : currentScale
     })`;
 
-    if (zoomCounter % 2 === 0) currentScaleOfPopup -= 0.5;
+    if (zoomCounter === 2) currentScaleOfPopup -= 0.5;
     if (isDetailOpened) {
       details.style.transform = `scale(${
         currentScaleOfPopup <= 1

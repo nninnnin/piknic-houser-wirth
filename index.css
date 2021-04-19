@@ -15,6 +15,8 @@ body {
   overflow: hidden;
   user-select: none;
   cursor: move;
+
+  font-family: Helvetica, sans-serif;
 }
 
 #loading {
@@ -31,7 +33,7 @@ body {
   align-items: center;
 
   opacity: 1;
-  transition: 3s;
+  transition: 1s;
 }
 
 #loading-status {
@@ -133,11 +135,9 @@ body {
 
   user-select: none;
   cursor: default;
-
-  font-size: 0.85vw;
 }
 
-#details span {
+#details > span {
   width: 100%;
   height: 100%;
   display: flex;
@@ -162,6 +162,16 @@ body {
 #details .header {
   font-weight: 900;
   margin-top: 0.7vw;
+  font-size: 0.85vw;
+  line-height: 1.5em;
+}
+
+#details .header .italic {
+  font-style: italic;
+}
+
+#details .header .normal {
+  font-style: normal;
 }
 
 #details hr {
@@ -192,7 +202,9 @@ body {
 }
 
 #details .desc {
-  font-weight: 600;
+  font-size: 0.75vw;
+  line-height: 1.5em;
+  word-break: keep-all;
 }
 
 #details .closeButton {
@@ -208,6 +220,7 @@ body {
   right: 0;
 
   background-color: #fff;
+  border: 1px solid black;
 
   width: 1.7vw;
   height: 1.7vw;
@@ -221,6 +234,10 @@ path {
 }
 
 .container svg polygon:hover {
+  fill: rgba(0, 0, 0, 0.5) !important;
+  cursor: default;
+}
+.container svg polyline:hover {
   fill: rgba(0, 0, 0, 0.5) !important;
   cursor: default;
 }

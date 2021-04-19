@@ -105,7 +105,7 @@
   },
   {
     "koreanName": "도리크니움 히르수툼",
-    "scientificName": "Dorycnium hirstum",
+    "scientificName": "Dorycnium hirsutum",
     "className": "DORYCNIUM HIRSUTUM",
     "description": "터키와 포르투갈 등 지중해성 기후의 초원지대에서 자생하는 식물이다. 옆으로 퍼지면서 낮게 자라며, 기하학적으로 촘촘하게 나는 은색 잎이 근사하다.",
     "icon1": "1",
@@ -117,8 +117,8 @@
     "flowering2": null
   },
   {
-    "koreanName": "에키나세아 '페이틀 어트랙션' + 피크난테뭄 무티쿰 60% + 40%",
-    "scientificName": "Echinacea purpurea 'Fatal Attraction' + Pycnanthemum muticum 60% + 40%",
+    "koreanName": "에키나세아 '페이틀 어트랙션' 60% + 피크난테뭄 무티쿰 40%",
+    "scientificName": "Echinacea purpurea 'Fatal Attraction' 60% + Pycnanthemum muticum 40%",
     "className": "ECHINACEA PURPUREA FA PM",
     "description": "짙은 색 줄기에 진분홍색 꽃이 피는 품종으로 색배합이 고풍스럽다. 꽃잎은 다소 딱딱하게 느껴진다. 훔멜로 개인정원에도 심겨져 있다. / 아우돌프가 무척 좋아하는 식물. 특유의 포엽이 무척 아름답고, 벌과 나비도 무척 좋아하여 꽃을 찾아온다. 하우저앤워스에서는 기후와 토양이 적절하지 못하여 산발적으로 자란다.",
     "icon1": "1,2",
@@ -163,7 +163,7 @@
     "icon1": "1,2",
     "height1": "60",
     "flowering1": "8",
-    "mixed": null,
+    "mixed": true,
     "icon2": null,
     "height2": null,
     "flowering2": null
@@ -262,7 +262,20 @@
   {
     "koreanName": "리시마키아 에페메룸",
     "scientificName": "Lysimachia ephemerum",
-    "className": "LYSIMACHIA EPHEMERUM",
+    "className": "LY EP",
+    "description": "뿌리가 마구잡이로 뻗어나가는 보통의 까치수염속 식물과 다르게 제 자리에서 머무르는 습성을 보인다. 잎은 은빛으로 빛나며 작은 별 모양의 꽃들이 기다란 줄기에서 피며, 적갈색 수술은 꽃잎과 대비를 이룬다",
+    "icon1": "1",
+    "height1": "90",
+    "flowering1": "7-9",
+    "mixed": null,
+    "icon2": null,
+    "height2": null,
+    "flowering2": null
+  },
+  {
+    "koreanName": "리시마키아 에페메룸",
+    "scientificName": "Lysimachia ephemerum",
+    "className": "LYSIMACHIA_EPHEMERUM",
     "description": "뿌리가 마구잡이로 뻗어나가는 보통의 까치수염속 식물과 다르게 제 자리에서 머무르는 습성을 보인다. 잎은 은빛으로 빛나며 작은 별 모양의 꽃들이 기다란 줄기에서 피며, 적갈색 수술은 꽃잎과 대비를 이룬다",
     "icon1": "1",
     "height1": "90",
@@ -286,8 +299,8 @@
     "flowering2": null
   },
   {
-    "koreanName": "모나르다 브라드부리아나 + 네페타 고바니아나 80% + 20%",
-    "scientificName": "Monarda bradburiana + Nepeta govaniana 80% + 20%",
+    "koreanName": "모나르다 브라드부리아나 80% + 네페타 고바니아나 20%",
+    "scientificName": "Monarda bradburiana 80% + Nepeta govaniana 20%",
     "className": "MONARDA BRADBURIANA NG",
     "description": "키는 작은 편이나 줄기가 곧게 남아있어 겨울까지 아름답다. 다른 종보다 이른 5월 중순부터 분홍색 꽃이 핀다. 가을에 물드는 잎의 색또한 아름답다. / 다른 개박하속 식물들과는 달리 줄기가 위로 올라오는 형태를 가진다. 그대신 줄기는 여전히 가늘어서 쉽게 눕는데 주변 식물과 기대도록 잘 배치한다면 특유의 하늘거리는 분위기를 정원에 들일 수 있다.",
     "icon1": "1,2\n",
@@ -573,7 +586,7 @@
   },
   {
     "koreanName": "중방울새풀 '리무지' + 몰리니아 세룰레아 '모어헥세' 60% + 40%",
-    "scientificName": "Briza media 'Limouzi' + Molinia 'Moorhexe' 60% + 40%",
+    "scientificName": "Briza media 'Limouzi' 60% + Molinia 'Moorhexe' 40%",
     "className": "BRM L + MOMO",
     "description": "꽃이 돋보기로 들여다 봐야 할만큼이나 작다. 작아서 이 식물만이 가지는 장점은 약한 바람에도 흔들려 큰 식물보다 우리의 시선을 사로잡는다. '리무지'는 잎이 좀 더 파란 품종이다.",
     "icon1": "1",
@@ -598,8 +611,8 @@
     "flowering2": null
   },
   {
-    "koreanName": "에키나세아 팔리다 + 가는잎나래새 70% +30%",
-    "scientificName": "Echinacea pallida + Stipa tenuissima 70% + 30%",
+    "koreanName": "에키나세아 팔리다 70% + 가는잎나래새 30%",
+    "scientificName": "Echinacea pallida 70% + Stipa tenuissima 30%",
     "className": "EC PA + ST TE",
     "description": "보통의 에키나세아와 달리 장수하는 안정적인 종으로 여긴다. 꽃이 진 후에는 씨송이가 겨울까지 아름다움을 이어간다. / 가느다란 잎은 1년 내내 부드럽고, 성장할 때나 말랐을 때나 풍성한 모습을 유지한다. 초여름에는 분수처럼 올라오는 모습은 꽃처럼 보이기도 한다. 초록색이 적은 이른 봄에도 존재감이 있다.",
     "icon1": "1",
@@ -691,7 +704,7 @@
   {
     "koreanName": "몰리니아 세룰레아 '모어헥세' + 칼라민타 네페타 네페타",
     "scientificName": "Molinia 'Moorhexe' + Calamintha nepeta ssp. nepeta",
-    "className": "MO MO + CA NE",
+    "className": "MO + CA",
     "description": "몰리니아 속 중에서 키가 가장 작은 종. 회랑정원에 바탕식재 역할로 식재되었고, 꽃은 짙은색으로 피었다가 연하게 마른다. 몰리니아속답게 가을단풍이 일품이다./ 건조한 초지에서 자라는 허브식물 중 하나로, 작고 하얀 꽃이 무성하게 달리는데 개화기 또한 길다. 수분에 무르는 것을 조심해야 한다.",
     "icon1": "1,2",
     "height1": "100",
@@ -1059,7 +1072,7 @@
     "description": "그래스에 대한 애정에도 불구하고 아우돌프는 이 식물은 잘 사용하지 않았다. 붉은색 잎은 매혹적이며 특히 스포로볼루스 헤테롤레피스와 멋진 대비를 이룬다.",
     "icon1": "1",
     "height1": "40",
-    "flowering1": null,
+    "flowering1": "3-4",
     "mixed": null,
     "icon2": null,
     "height2": null,
@@ -1158,8 +1171,8 @@
   },
   {
     "koreanName": "중국기린초 '코랄 리프'",
-    "scientificName": "Sedum 'Coral Reeves' ('Coral reef' 오타인듯?)",
-    "className": "SC CO RE",
+    "scientificName": "Sedum 'Coral Reeves'",
+    "className": "SE CO RE",
     "description": "중국에서 자생하는 기린초이다. 아주 낮게 자라되 주변으로 서서히 퍼져나가 땅을 덮기도 하고, 화분에 심어 늘어뜨리기도 한다. 'Coral leaf'는 잎 끝에 갈색으로 무늬가 있다.",
     "icon1": "1",
     "height1": "7",
@@ -1301,7 +1314,7 @@
   },
   {
     "koreanName": "시베리아붓꽃 '페리스 블루'",
-    "scientificName": "Iris sibirica 'Perry's Blue'",
+    "scientificName": "Iris sibirica 'Perry`s Blue'",
     "className": "IR SI PE BL",
     "description": "꽃만 두고 보면 별다른 매력이 없지만 무리 지어 핀 꽃들은 제법 오랫동안 풍경을 이뤄낸다. 시베리아붓꽃은 건조함에도 강한 모습을 보이며, 튼튼하고 병충해에도 강하다.",
     "icon1": "1,2",
