@@ -1,8 +1,8 @@
 # Plants of the Oudolf Gardens
 
-![](/public/preview.gif)
+![piet-oudolf](/public/preview.gif)
 
-전시공간 Piknic의 의뢰로 개발되었으며, Piet Oudolf의 정원 조감도를 이용하여 식물들을 소개하는 한장의 웹 페이지 입니다.
+전시공간 Piknic의 의뢰로 개발되었으며, Piet Oudolf의 정원 조감도를 이용하여 식물들을 소개하는 한장의 웹페이지 입니다.
 
 ### Features
 
@@ -20,17 +20,17 @@ index.html을 크롬 등 브라우저를 이용해 실행합니다.
 
 ### Backlogs
 
-- 확대시 디테일 팝업 크기 제한 [V]
-- 무브 시 플랜트 클릭 무시 **\*** [V]
+- [X] 확대시 디테일 팝업 크기 제한
+- [X] 무브 시 플랜트 클릭 무시
   - https://stackoverflow.com/questions/8643739/cancel-click-event-in-the-mouseup-event-handler
-- 화면 안쪽에서만 디테일 팝업이 열리도록 [V]
+- [X] 화면 안쪽에서만 디테일 팝업이 열리도록
   - element.offsetWidth, offsetHeight, offsetLeft, offsetTop
   - window.innerWidth, innerHeight
-- 2,4번째 줌 인/아웃에서는 디테일 팝업도 함께 줌 인/아웃되도록 [V]
-- 플랜트 클릭 시 동일한 플랜트 모두 Active 상태로 표시 [ ]
-- 디테일 열릴때 마우스 클릭 위치에서 애니메이션 시작되도록 [ ]
-- 확대 시 현재 포커스 중심으로 확대되도록 [ ]
+- [X] 2,4번째 줌 인/아웃에서는 디테일 팝업도 함께 줌 인/아웃되도록
+- [ ] 플랜트 클릭 시 동일한 플랜트 모두 Active 상태로 표시
+- [ ] 디테일 열릴때 마우스 클릭 위치에서 애니메이션 시작되도록
+- [ ] 확대 시 현재 포커스 중심으로 확대되도록
 
-<br>
+---
 
-\*\* 개발에 필요한 디자인과 데이터는 Piknic에서 제공받았음을 알립니다.
+디자인과 정원 관련 정보는 Piknic에서 제공받았음을 알립니다.
